@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        ESP32 Block IDE
+    </title>
+
+    <!-- Blockly -->
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- ========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+    <div class="title">
+
+        <div class="logo">
+            🧩
+        </div>
+
+        <div>
+
+            <h1>
+                ESP32 Block IDE
+            </h1>
+
+            <p>
+                Version 0.1
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="controls">
+
+        <select id="port">
+
+            <option value="">
+                Detecting ports...
+            </option>
+
+        </select>
+
+
+        <button
+            onclick="refreshPorts()"
+        >
+            🔄 Refresh
+        </button>
+
+
+        <button
+            class="upload"
+            onclick="uploadProgram()"
+        >
+            🚀 Upload
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+    <!-- BLOCKLY -->
+
+    <section
+        id="blocklyArea"
+    >
+
+        <div
+            id="blocklyDiv"
+        ></div>
+
+    </section>
+
+
+    <!-- RIGHT PANEL -->
+
+    <section
+        class="side"
+    >
+
+        <div class="tabs">
+
+            <button
+                id="codeTab"
+                class="active"
+                onclick="showCode()"
+            >
+                C++ Code
+            </button>
+
+
+            <button
+                id="outputTab"
+                onclick="showOutput()"
+            >
+                Output
+            </button>
+
+        </div>
+
+
+        <pre
+            id="code"
+        ></pre>
+
+
+        <pre
+            id="output"
+            class="hidden"
+        >Ready.</pre>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================================
+     TOOLBOX
+========================================================= -->
+
+<xml
+    id="toolbox"
+    style="display:none"
+>
+
+    <category
+        name="ESP32"
+        colour="#2563eb"
+    >
+
+        <block
+            type="esp_start"
+        ></block>
+
+        <block
+            type="esp_gpio"
+        ></block>
+
+    </category>
+
+
+    <category
+        name="Values"
+        colour="#8b5cf6"
+    >
+
+        <block
+            type="math_number"
+        ></block>
+
+    </category>
+
+</xml>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
