@@ -1,0 +1,740 @@
+/* ============================================================
+   ESP32 BLOCK IDE
+   VERSION 0.2
+============================================================ */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+
+    overflow: hidden;
+
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #080d18;
+
+    color: #f8fafc;
+}
+
+
+/* ============================================================
+   TOP BAR
+============================================================ */
+
+.topbar {
+
+    height: 68px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    background:
+        rgba(12, 19, 32, 0.96);
+
+    border-bottom:
+        1px solid #263449;
+
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.25);
+
+    position: relative;
+
+    z-index: 20;
+}
+
+
+/* ============================================================
+   BRAND
+============================================================ */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+.brand-icon {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(59, 130, 246, 0.28);
+}
+
+
+.brand-title {
+
+    font-size: 17px;
+
+    font-weight: 750;
+
+    letter-spacing: -0.2px;
+}
+
+
+.brand-version {
+
+    margin-top: 2px;
+
+    color: #8fa1b8;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* ============================================================
+   HEADER ACTIONS
+============================================================ */
+
+.header-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+
+.connection {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 0 9px;
+
+    color: #a9b8ca;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.status-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #64748b;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(100, 116, 139, 0.12);
+}
+
+
+.status-dot.connected {
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(34, 197, 94, 0.12);
+}
+
+
+.status-dot.disconnected {
+
+    background: #ef4444;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(239, 68, 68, 0.12);
+}
+
+
+/* ============================================================
+   SELECT
+============================================================ */
+
+select {
+
+    height: 38px;
+
+    min-width: 185px;
+
+    padding: 0 12px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background: #111a2a;
+
+    color: #f8fafc;
+
+    outline: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+select:hover {
+
+    border-color: #4b5f7b;
+}
+
+
+select:focus {
+
+    border-color: #3b82f6;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(59, 130, 246, 0.13);
+}
+
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.secondary-button,
+.upload-button {
+
+    height: 38px;
+
+    border-radius: 9px;
+
+    padding: 0 13px;
+
+    border: 1px solid #334155;
+
+    color: #e2e8f0;
+
+    background: #111a2a;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.12s,
+        background 0.12s,
+        border-color 0.12s;
+}
+
+
+.secondary-button:hover {
+
+    background: #1a2639;
+
+    border-color: #50627c;
+}
+
+
+.upload-button {
+
+    padding: 0 17px;
+
+    border-color: #22c55e;
+
+    background:
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #15803d
+        );
+
+    color: white;
+
+    box-shadow:
+        0 4px 14px
+        rgba(34, 197, 94, 0.18);
+}
+
+
+.upload-button:hover {
+
+    transform:
+        translateY(-1px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #22c55e,
+            #16a34a
+        );
+}
+
+
+.upload-button:active {
+
+    transform:
+        translateY(0);
+}
+
+
+/* ============================================================
+   MAIN
+============================================================ */
+
+.workspace {
+
+    width: 100%;
+
+    height:
+        calc(100vh - 68px);
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        440px;
+}
+
+
+/* ============================================================
+   BLOCK EDITOR
+============================================================ */
+
+.editor-panel {
+
+    position: relative;
+
+    min-width: 0;
+
+    min-height: 0;
+
+    background: #101827;
+}
+
+
+#blocklyDiv {
+
+    width: 100%;
+
+    height: 100%;
+}
+
+
+/* ============================================================
+   CODE PANEL
+============================================================ */
+
+.code-panel {
+
+    min-width: 0;
+
+    min-height: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #080d18;
+
+    border-left:
+        1px solid #263449;
+}
+
+
+/* ============================================================
+   PANEL HEADER
+============================================================ */
+
+.panel-header {
+
+    height: 52px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 12px;
+
+    background: #0d1524;
+
+    border-bottom:
+        1px solid #263449;
+}
+
+
+.panel-tabs {
+
+    height: 100%;
+
+    display: flex;
+
+    gap: 2px;
+}
+
+
+.tab {
+
+    height: 100%;
+
+    padding: 0 13px;
+
+    border: 0;
+
+    border-bottom:
+        2px solid transparent;
+
+    background: transparent;
+
+    color: #7f91a8;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 700;
+}
+
+
+.tab:hover {
+
+    color: #dbeafe;
+}
+
+
+.tab.active {
+
+    color: #ffffff;
+
+    border-bottom-color:
+        #60a5fa;
+}
+
+
+.copy-button {
+
+    border:
+        1px solid #334155;
+
+    background: #121c2c;
+
+    color: #b8c6d8;
+
+    border-radius: 7px;
+
+    padding: 6px 10px;
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.copy-button:hover {
+
+    color: white;
+
+    background: #1b293d;
+}
+
+
+/* ============================================================
+   CODE
+============================================================ */
+
+.code-area,
+.output-area {
+
+    flex: 1;
+
+    min-height: 0;
+
+    margin: 0;
+
+    padding: 18px;
+
+    overflow: auto;
+
+    font-family:
+        "Cascadia Code",
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 12.5px;
+
+    line-height: 1.7;
+
+    white-space: pre-wrap;
+
+    overflow-wrap: anywhere;
+}
+
+
+.code-area {
+
+    color: #dbeafe;
+
+    background:
+        linear-gradient(
+            180deg,
+            #080d18,
+            #070b14
+        );
+}
+
+
+.output-area {
+
+    color: #cbd5e1;
+
+    background: #060a12;
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+
+    width: 9px;
+
+    height: 9px;
+}
+
+
+::-webkit-scrollbar-track {
+
+    background: #0a101c;
+}
+
+
+::-webkit-scrollbar-thumb {
+
+    background: #334155;
+
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #475569;
+}
+
+
+/* ============================================================
+   BLOCKLY DARK THEME
+============================================================ */
+
+.blocklyToolboxDiv {
+
+    background:
+        #0c1422 !important;
+
+    border-right:
+        1px solid #263449 !important;
+}
+
+
+.blocklyTreeRow {
+
+    height: 42px !important;
+
+    padding: 0 12px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    border-radius: 7px;
+
+    margin: 2px 6px;
+}
+
+
+.blocklyTreeRow:hover {
+
+    background:
+        #172338 !important;
+}
+
+
+.blocklyTreeSelected {
+
+    background:
+        #1d3557 !important;
+}
+
+
+.blocklyTreeLabel {
+
+    color:
+        #e5edf7 !important;
+
+    font-size: 13px !important;
+
+    font-weight: 650 !important;
+}
+
+
+/* ============================================================
+   MOBILE
+============================================================ */
+
+@media (
+    max-width: 900px
+) {
+
+    .topbar {
+
+        height: 112px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+        justify-content: center;
+
+        gap: 8px;
+
+        padding: 8px 12px;
+    }
+
+
+    .header-actions {
+
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+
+    .connection {
+
+        display: none;
+    }
+
+
+    select {
+
+        flex: 1;
+
+        min-width: 130px;
+    }
+
+
+    .workspace {
+
+        height:
+            calc(100vh - 112px);
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .code-panel {
+
+        display: none;
+    }
+}
+
+
+/* ============================================================
+   SMALL PHONE
+============================================================ */
+
+@media (
+    max-width: 500px
+) {
+
+    .brand-title {
+
+        font-size: 15px;
+    }
+
+
+    .brand-icon {
+
+        width: 34px;
+
+        height: 34px;
+    }
+
+
+    .secondary-button {
+
+        width: 38px;
+
+        padding: 0;
+    }
+
+
+    .upload-button {
+
+        padding: 0 12px;
+    }
+}
