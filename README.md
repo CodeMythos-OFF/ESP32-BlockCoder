@@ -1,5 +1,10 @@
 # ESP32-BlockCoder
 It is best for beginners who recently entered the world of coding especially coding to a machine 
+
+-pip install flask pyserial
+-python app.py
+-you need Audruino cli and it location want to be marked on the file
+
 # What's New Version 0.2 
 - More number of function and some style modification
 # What's next v-0.3
