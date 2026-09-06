@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ESP32 Block IDE — V1</title>
+<script src="https://unpkg.com/blockly/blockly.min.js"></script>
+<script src="https://unpkg.com/blockly/blocks.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="logo">E32</div><div><div class="title">ESP32 Block IDE</div><div class="sub">V1 · Visual programming for ESP32</div></div></div>
+  <div class="top-actions">
+    <div class="connection"><span id="dot"></span><span id="status">Checking board…</span></div>
+    <select id="port"><option value="">Select COM port</option></select>
+    <button class="icon-btn" onclick="refreshPorts()" title="Refresh ports">⟳</button>
+    <button onclick="newProject()">New</button><button onclick="saveProject()">Save</button><button onclick="loadProject()">Open</button>
+    <button class="upload" onclick="uploadProgram()">▶ Upload</button>
+  </div>
+</header>
+<div class="app">
+  <aside class="rail">
+    <button class="rail-item active" onclick="showPanel('blocks')">▦<span>Blocks</span></button>
+    <button class="rail-item" onclick="showPanel('code')">⌘<span>C++</span></button>
+    <button class="rail-item" onclick="showPanel('serial')">⌁<span>Serial</span></button>
+    <button class="rail-item" onclick="showPanel('output')">▤<span>Build</span></button>
+    <div class="rail-spacer"></div><div class="board-badge">ESP32<br><small>CLASSIC</small></div>
+  </aside>
+  <main class="workspace-shell">
+    <div class="workspace-head">
+      <div><b id="panelTitle">Block workspace</b><span id="blockCount">0 blocks</span></div>
+      <div class="workspace-tools">
+        <button onclick="workspace.undo(false)">↶</button><button onclick="workspace.undo(true)">↷</button>
+        <button onclick="zoomOut()">−</button><button onclick="zoomReset()">100%</button><button onclick="zoomIn()">+</button>
+        <button class="danger" onclick="clearWorkspace()">Clear</button>
+      </div>
+    </div>
+    <section id="blockPanel" class="panel"><div id="blocklyDiv"></div></section>
+    <section id="codePanel" class="panel hidden"><div class="panel-toolbar"><span>C++ generated from your blocks</span><button onclick="copyCode()">Copy code</button></div><pre id="code"></pre></section>
+    <section id="serialPanel" class="panel hidden">
+      <div class="serial-toolbar"><select id="baud"><option>9600</option><option>19200</option><option>38400</option><option>57600</option><option selected>115200</option></select><button class="primary" id="serialBtn" onclick="toggleSerial()">Connect</button><button onclick="clearSerial()">Clear</button></div>
+      <pre id="serialOut">Serial Monitor ready.</pre>
+      <div class="serial-send"><input id="serialInput" placeholder="Type a message and press Enter…" onkeydown="if(event.key==='Enter')sendSerial()"><button class="primary" onclick="sendSerial()">Send</button></div>
+    </section>
+    <section id="outputPanel" class="panel hidden"><div class="panel-toolbar"><span>Compiler / uploader output</span><button onclick="clearOutput()">Clear</button></div><pre id="out">Ready. Build output will appear here.</pre></section>
+  </main>
+</div>
+<input hidden id="file" type="file" accept=".json" onchange="importProject(event)">
+<script src="app.js"></script>
+</body></html>

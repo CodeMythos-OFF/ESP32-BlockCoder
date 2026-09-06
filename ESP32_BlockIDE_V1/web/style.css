@@ -1,0 +1,65 @@
+*{box-sizing:border-box}:root{--bg:#080b12;--panel:#0d121c;--line:#263244;--text:#f8fafc;--muted:#94a3b8}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif}button,select,input{font:inherit}button{cursor:pointer;color:#fff;background:#141d2b;border:1px solid #334155;border-radius:8px;height:34px;padding:0 11px;font-size:12px;font-weight:750}button:hover{background:#1e293b;border-color:#475569}
+.top{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 15px 0 18px;background:#0a0f18;border-bottom:1px solid var(--line);box-shadow:0 8px 30px #0008;position:relative;z-index:20}.brand{display:flex;align-items:center;gap:11px}.logo{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#2563eb,#7c3aed);font-weight:950;font-size:12px}.title{font-size:16px;font-weight:850}.sub{font-size:10px;color:#a8b5c7;margin-top:3px}.top-actions{display:flex;align-items:center;gap:6px}.connection{display:flex;align-items:center;gap:7px;margin-right:5px;color:#dbeafe;font-size:11px;font-weight:750}.connection span:first-child{width:8px;height:8px;border-radius:50%;background:#f43f5e}.connection span:first-child.ok{background:#22c55e;box-shadow:0 0 0 4px #22c55e22}.connection span:first-child.busy{background:#f59e0b}
+select,input{height:36px;background:#101927;color:#fff;border:1px solid #334155;border-radius:8px;padding:0 10px;outline:none;font-size:12px;font-weight:650}select{min-width:155px}select:focus,input:focus{border-color:#60a5fa;box-shadow:0 0 0 3px #60a5fa22}.upload{background:linear-gradient(135deg,#16a34a,#15803d);border-color:#4ade80}.icon-btn{font-size:17px;width:36px;padding:0}
+.app{height:calc(100vh - 70px);display:flex;min-width:0}.rail{width:70px;flex:none;background:#080d15;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:10px 7px;gap:7px}.rail-item{width:55px;height:54px;padding:5px 0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:transparent;border:1px solid transparent;color:#7f90a7;font-size:18px}.rail-item span{font-size:9px;font-weight:800}.rail-item:hover{background:#121c2b;color:#fff}.rail-item.active{background:#172b4d;border-color:#2e5ea5;color:#fff}.rail-spacer{flex:1}.board-badge{text-align:center;font-size:9px;font-weight:900;color:#93c5fd;line-height:1.35;padding:7px 2px;border:1px solid #24456f;border-radius:8px;background:#0d1b30}.board-badge small{font-size:7px;color:#64748b}
+.workspace-shell{min-width:0;min-height:0;flex:1;background:#0b111b;display:flex;flex-direction:column}.workspace-head{height:46px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 10px 0 14px;background:#0e1622;border-bottom:1px solid var(--line)}.workspace-head b{font-size:12px}.workspace-head span{font-size:10px;color:var(--muted);margin-left:9px}.workspace-tools{display:flex;gap:4px}.workspace-tools button{height:29px;min-width:30px;padding:0 8px}.workspace-tools .danger{color:#fca5a5}
+.panel{position:relative;flex:1;min-height:0;background:#111827}.hidden{display:none!important}.panel-toolbar{height:45px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid var(--line);background:#0d1420;color:#dbeafe;font-size:11px;font-weight:750}#code,#out{position:absolute;inset:45px 0 0;margin:0;padding:17px;overflow:auto;white-space:pre-wrap;color:#dbe7f5;background:#070b12;font:12px/1.7 "Cascadia Code",Consolas,monospace}
+.serial-toolbar{height:52px;display:flex;align-items:center;gap:7px;padding:8px;border-bottom:1px solid var(--line);background:#0d1420}.serial-toolbar select{min-width:110px}.primary{background:#1d4ed8;border-color:#60a5fa}.serial-panel{}.serial-send{position:absolute;left:0;right:0;bottom:0;height:55px;padding:9px;display:flex;gap:7px;background:#0d1420;border-top:1px solid var(--line)}.serial-send input{flex:1}#serialOut{position:absolute;top:52px;bottom:55px;left:0;right:0;margin:0;padding:14px;overflow:auto;white-space:pre-wrap;background:#02050a;color:#d1fae5;font:12px/1.65 "Cascadia Code",Consolas,monospace}
+.blocklyToolboxDiv{background:#090f19!important;border-right:1px solid #263244!important;padding:6px 4px!important}.blocklyTreeRow{height:39px!important;margin:2px 4px!important;padding:0 10px!important;border-radius:8px!important;display:flex!important;align-items:center!important}.blocklyTreeRow:hover{background:#172235!important}.blocklyTreeSelected{background:#1e3a67!important}.blocklyTreeLabel{color:#f8fafc!important;font-size:12px!important;font-weight:800!important}.blocklyMainBackground{fill:#111827!important}.blocklyFlyoutBackground{fill:#0b1220!important}.blocklyScrollbarHandle{fill:#64748b!important}.blocklyScrollbarBackground{fill:#0b1220!important}
+::-webkit-scrollbar{width:9px;height:9px}::-webkit-scrollbar-track{background:#070b12}::-webkit-scrollbar-thumb{background:#3b4758;border-radius:9px}
+@media(max-width:1050px){.connection{display:none}.top-actions button:nth-of-type(3),.top-actions button:nth-of-type(4){display:none}.rail{width:58px}.rail-item{width:46px}.board-badge{display:none}}@media(max-width:760px){.top{height:104px;flex-direction:column;align-items:stretch;justify-content:center;gap:7px;padding:7px 10px}.brand{height:37px}.top-actions{overflow:auto}.top-actions select{flex:1;min-width:120px}.app{height:calc(100vh - 104px)}.rail{width:50px}.rail-item{width:40px}.rail-item span{display:none}.workspace-tools button:nth-child(3),.workspace-tools button:nth-child(4),.workspace-tools button:nth-child(5){display:none}}
+
+/* Blockly must have an explicit size or its SVG/toolbox can render at 0px. */
+#blocklyDiv{position:absolute;inset:0;width:100%;height:100%;min-width:0;min-height:0;overflow:hidden;}
+
+
+/* ===== Blockly dark toolbox - forced theme ===== */
+#blocklyDiv .blocklyToolboxDiv,
+#blocklyDiv .blocklyToolbox,
+#blocklyDiv .blocklyToolboxContents,
+#blocklyDiv .blocklyTreeRoot {
+    background: #0a1220 !important;
+    background-color: #0a1220 !important;
+    color: #f8fafc !important;
+    border-color: #263449 !important;
+}
+
+#blocklyDiv .blocklyToolboxCategory,
+#blocklyDiv .blocklyTreeRow {
+    background: #0a1220 !important;
+    color: #f8fafc !important;
+}
+
+#blocklyDiv .blocklyToolboxCategory:hover,
+#blocklyDiv .blocklyTreeRow:hover {
+    background: #162238 !important;
+}
+
+#blocklyDiv .blocklyToolboxCategorySelected,
+#blocklyDiv .blocklyTreeRow.blocklyTreeRowSelected {
+    background: #1d3557 !important;
+}
+
+#blocklyDiv .blocklyToolboxCategoryLabel,
+#blocklyDiv .blocklyTreeLabel,
+#blocklyDiv .blocklyTreeLabel span {
+    color: #f8fafc !important;
+}
+
+#blocklyDiv .blocklyToolboxCategoryIcon,
+#blocklyDiv .blocklyTreeIcon {
+    color: #cbd5e1 !important;
+    fill: #cbd5e1 !important;
+}
+
+#blocklyDiv .blocklyFlyout,
+#blocklyDiv .blocklyFlyoutBackground {
+    fill: #0d1728 !important;
+    background: #0d1728 !important;
+}
+
+#blocklyDiv .blocklyFlyoutLabelText,
+#blocklyDiv .blocklyText {
+    fill: #f8fafc;
+}
